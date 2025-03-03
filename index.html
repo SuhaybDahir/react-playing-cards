@@ -90,14 +90,20 @@
             }
 
             function tossCard() {
-    if (pickedCard !== null) {
-        setSelectedCards(prevCards => prevCards.filter((_, index) => index !== pickedCard));
-        setPickedCard(null);
-    }
-}
+                if (pickedCard !== null) {
+                    setSelectedCards(prevCards => prevCards.filter((_, index) => index !== pickedCard));
+                    setPickedCard(null);
+                }
+            }
 
             function regroupCards() {
                 setSelectedCards([...selectedCards].sort(() => Math.random() - 0.5));
+            }
+
+            function addWildcard() {
+                const suit = suits[Math.floor(Math.random() * 4)];
+                const value = values[Math.floor(Math.random() * 13)];
+                setSelectedCards([...selectedCards, { suit, value }]);
             }
 
             return (
@@ -111,6 +117,7 @@
                     <button onClick={resetDeck}>Reset</button>
                     <button onClick={tossCard} disabled={pickedCard === null}>Toss</button>
                     <button onClick={regroupCards}>Regroup</button>
+                    <button onClick={addWildcard}>Wildcard</button>
 
                     <div className="selected-cards">
                         {selectedCards.map((card, index) => (
