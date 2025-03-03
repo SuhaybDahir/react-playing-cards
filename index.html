@@ -17,11 +17,36 @@
     <div id="root"></div> <!-- 🔹 React will render here -->
 
     <script type="text/babel">
+        console.log("✅ React is running!");
+
+        // ✅ Define suits and values
+        const suits = ["♥", "♦", "♣", "♠"];
+        const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
+        // ✅ Function to create a full deck
+        function createDeck() {
+            let deck = [];
+            for (let suit of suits) {
+                for (let value of values) {
+                    deck.push({ suit, value });
+                }
+            }
+            return deck;
+        }
+
+        // ✅ Card Component
+        function Card({ suit, value }) {
+            return <span className="card">{value} {suit}</span>;
+        }
+
         function App() {
             return (
                 <div>
                     <h2>🔥 React Card Deck 🔥</h2>
                     <p>Click the deck to draw a card!</p>
+
+                    {/* 🔹 Display a sample card */}
+                    <Card suit="♠" value="A" />
                 </div>
             );
         }
