@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 React Card Deck 🔥</title>
+    <title>🔥 React Playing Cards 🔥</title>
 
     <!-- ✅ Load React & Babel -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -39,14 +39,41 @@
             return <span className="card">{value} {suit}</span>;
         }
 
+        // ✅ Deck Component
+        function Deck() {
+            const [deck, setDeck] = React.useState(createDeck());
+            const [selectedCards, setSelectedCards] = React.useState([]);
+
+            function drawCard() {
+                if (deck.length === 0) return;
+                const randomIndex = Math.floor(Math.random() * deck.length);
+                const newCard = deck[randomIndex];
+
+                setDeck(deck.filter((_, index) => index !== randomIndex));
+                setSelectedCards([...selectedCards, newCard]);
+            }
+
+            return (
+                <div>
+                    <div className="deck" onClick={drawCard}>
+                        {deck.length ? "Click to Draw" : "No Cards Left"}
+                    </div>
+
+                    <div className="selected-cards">
+                        {selectedCards.map((card, index) => (
+                            <Card key={index} suit={card.suit} value={card.value} />
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
         function App() {
             return (
                 <div>
-                    <h2>🔥 React Card Deck 🔥</h2>
+                    <h2>🔥 React Playing Cards 🔥</h2>
                     <p>Click the deck to draw a card!</p>
-
-                    {/* 🔹 Display a sample card */}
-                    <Card suit="♠" value="A" />
+                    <Deck />
                 </div>
             );
         }
