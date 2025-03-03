@@ -1,3 +1,4 @@
+/* Global Styles */
 body {
     font-family: 'Poppins', sans-serif;
     background: linear-gradient(to bottom, #6c6cb4, #2a456b);
@@ -5,4 +6,110 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
+}
+
+/* Header */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Button Styling */
+button {
+    background-color: #ff6384;
+    border: none;
+    padding: 12px 18px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+    background-color: #ff3b6e;
+    transform: scale(1.1);
+}
+
+button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+/* Deck Styling */
+.deck {
+    width: 150px;
+    height: 200px;
+    border: 2px solid white;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    margin: 20px auto;
+}
+
+.deck:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Selected Cards */
+.selected-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Individual Card */
+.card {
+    width: 100px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover Effect */
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 6px 12px rgba(255, 255, 255, 0.3);
+}
+
+/* Highlight Selected Card */
+.card.selected {
+    border-color: gold;
+    box-shadow: 0px 0px 12px gold;
+}
+
+/* Different Colors for Red and Black Suits */
+.card:contains("♥"),
+.card:contains("♦") {
+    color: #ff4757; /* Red */
+}
+
+.card:contains("♠"),
+.card:contains("♣") {
+    color: #ffffff; /* White */
 }
