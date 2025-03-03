@@ -35,14 +35,22 @@
         }
 
         // ✅ Card Component
-        function Card({ suit, value }) {
-            return <span className="card">{value} {suit}</span>;
+        function Card({ suit, value, isSelected, onClick }) {
+            return (
+                <span 
+                    className={`card ${isSelected ? 'selected' : ''}`} 
+                    onClick={onClick}
+                >
+                    {value} {suit}
+                </span>
+            );
         }
 
         // ✅ Deck Component
         function Deck() {
             const [deck, setDeck] = React.useState(createDeck());
             const [selectedCards, setSelectedCards] = React.useState([]);
+            const [pickedCard, setPickedCard] = React.useState(null);
 
             function drawCard() {
                 if (deck.length === 0) return;
@@ -59,11 +67,26 @@
 
                 setDeck(shuffledDeck.slice(count));
                 setSelectedCards(shuffledDeck.slice(0, count));
+                setPickedCard(null);
             }
 
             function resetDeck() {
                 setDeck(createDeck());
                 setSelectedCards([]);
+                setPickedCard(null);
+            }
+
+            function toggleCardSelection(index) {
+                if (pickedCard === null) {
+                    setPickedCard(index);
+                } else if (pickedCard === index) {
+                    setPickedCard(null);
+                } else {
+                    let newCards = [...selectedCards];
+                    [newCards[pickedCard], newCards[index]] = [newCards[index], newCards[pickedCard]];
+                    setSelectedCards(newCards);
+                    setPickedCard(null);
+                }
             }
 
             return (
@@ -78,7 +101,13 @@
 
                     <div className="selected-cards">
                         {selectedCards.map((card, index) => (
-                            <Card key={index} suit={card.suit} value={card.value} />
+                            <Card 
+                                key={index} 
+                                suit={card.suit} 
+                                value={card.value} 
+                                isSelected={pickedCard === index}
+                                onClick={() => toggleCardSelection(index)}
+                            />
                         ))}
                     </div>
                 </div>
