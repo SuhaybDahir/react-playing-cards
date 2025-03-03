@@ -61,6 +61,11 @@
                 setSelectedCards(shuffledDeck.slice(0, count));
             }
 
+            function resetDeck() {
+                setDeck(createDeck());
+                setSelectedCards([]);
+            }
+
             return (
                 <div>
                     <div className="deck" onClick={drawCard}>
@@ -69,6 +74,7 @@
 
                     <button onClick={() => dealCards(5)}>Deal 5</button>
                     <button onClick={() => dealCards(7)}>Deal 7</button>
+                    <button onClick={resetDeck}>Reset</button>
 
                     <div className="selected-cards">
                         {selectedCards.map((card, index) => (
