@@ -90,11 +90,11 @@
             }
 
             function tossCard() {
-                if (pickedCard !== null) {
-                    setSelectedCards(prevCards => prevCards.filter((_, index) => index !== pickedCard));
-                    setPickedCard(null);
-                }
-            }
+    if (pickedCard !== null) {
+        setSelectedCards([...selectedCards]); // Forgot to remove the picked card
+        setPickedCard(null);
+    }
+}
 
             function regroupCards() {
                 setSelectedCards([...selectedCards].sort(() => Math.random() - 0.5));
