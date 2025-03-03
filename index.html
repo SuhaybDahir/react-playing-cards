@@ -96,6 +96,10 @@
                 }
             }
 
+            function regroupCards() {
+                setSelectedCards([...selectedCards].sort(() => Math.random() - 0.5));
+            }
+
             return (
                 <div>
                     <div className="deck" onClick={drawCard}>
@@ -106,6 +110,7 @@
                     <button onClick={() => dealCards(7)}>Deal 7</button>
                     <button onClick={resetDeck}>Reset</button>
                     <button onClick={tossCard} disabled={pickedCard === null}>Toss</button>
+                    <button onClick={regroupCards}>Regroup</button>
 
                     <div className="selected-cards">
                         {selectedCards.map((card, index) => (
