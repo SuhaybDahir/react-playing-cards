@@ -91,7 +91,7 @@
 
             function tossCard() {
     if (pickedCard !== null) {
-        setSelectedCards([...selectedCards]); // Forgot to remove the picked card
+        setSelectedCards(prevCards => prevCards.filter((_, index) => index !== pickedCard));
         setPickedCard(null);
     }
 }
