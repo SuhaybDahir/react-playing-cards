@@ -15,5 +15,19 @@
 </head>
 <body>
     <div id="root"></div> <!-- 🔹 React will render here -->
+
+    <script type="text/babel">
+        function App() {
+            return (
+                <div>
+                    <h2>🔥 React Card Deck 🔥</h2>
+                    <p>Click the deck to draw a card!</p>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
 </body>
 </html>
