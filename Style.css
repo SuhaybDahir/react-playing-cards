@@ -1,0 +1,8 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #6c6cb4, #2a456b);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
