@@ -53,11 +53,22 @@
                 setSelectedCards([...selectedCards, newCard]);
             }
 
+            function dealCards(count) {
+                let shuffledDeck = [...deck, ...selectedCards];
+                shuffledDeck.sort(() => Math.random() - 0.5);
+
+                setDeck(shuffledDeck.slice(count));
+                setSelectedCards(shuffledDeck.slice(0, count));
+            }
+
             return (
                 <div>
                     <div className="deck" onClick={drawCard}>
                         {deck.length ? "Click to Draw" : "No Cards Left"}
                     </div>
+
+                    <button onClick={() => dealCards(5)}>Deal 5</button>
+                    <button onClick={() => dealCards(7)}>Deal 7</button>
 
                     <div className="selected-cards">
                         {selectedCards.map((card, index) => (
