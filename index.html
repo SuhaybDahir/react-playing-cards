@@ -77,17 +77,18 @@
             }
 
             function toggleCardSelection(index) {
-                if (pickedCard === null) {
-                    setPickedCard(index);
-                } else if (pickedCard === index) {
-                    setPickedCard(null);
-                } else {
-                    let newCards = [...selectedCards];
-                    [newCards[pickedCard], newCards[index]] = [newCards[index], newCards[pickedCard]];
-                    setSelectedCards(newCards);
-                    setPickedCard(null);
-                }
-            }
+    if (pickedCard === null) {
+        setPickedCard(null); 
+    } else if (pickedCard === index) {
+        setPickedCard(null);
+    } else {
+        let newCards = [...selectedCards];
+        [newCards[pickedCard], newCards[index]] = [newCards[index], newCards[pickedCard]];
+        setSelectedCards(newCards);
+        setPickedCard(null);
+    }
+}
+
 
             function tossCard() {
                 if (pickedCard !== null) {
